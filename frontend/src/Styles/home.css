@@ -1,0 +1,191 @@
+/* Base styles for the purple container - shown on all pages */
+body {
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+}
+.home-container h2 {
+  font-size: 3.5rem; /* 56px - much larger */
+  font-weight: 900; /* Extra bold */
+  margin: 0.5em 0; /* Adjust spacing */
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3), 
+    0 0 10px rgba(255, 255, 255, 0.5); /* Glow effect */
+  letter-spacing: 1px; /* Better readability */
+  line-height: 1.2; /* Prevent line overlap */
+}
+
+.home-container {
+  background: linear-gradient(to right, #a43d5e82, #a43d5e82);
+  font-family: 'Poppins', sans-serif;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
+  width: 24%;
+  min-width: 320px;
+  min-height: 500px; /* Added minimum height */
+  height: auto; /* Allows content to expand if needed */
+  color: white;
+  margin-top: 15vh;
+  margin-left: 10vw;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Better content distribution */
+}
+
+/* Home page specific styles (localhost:3000/) */
+.home-container.home-page {
+  overflow: visible;
+}
+
+/* Building styles - only on home page */
+.home-page .building {
+  position: absolute;
+  left: -100px;
+  bottom: -20px;
+  width: 100px;
+  height: 790px;
+  background: linear-gradient(to right, #8B8B8B, #C0C0C0);
+  border: 7px solid #5A5A5A;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page .floor {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #5A5A5A;
+}
+
+.home-page .window {
+  width: 20px;
+  height: 30px;
+  background-color: #FFD700;
+  border: 1px solid #5A5A5A;
+  transition: background-color 0.3s ease;
+}
+
+.home-page .window.active {
+  background-color: #4CAF50;
+  animation: windowReset 3s forwards;
+}
+
+@keyframes windowReset {
+  to { background-color: #FFD700; }
+}
+
+/* Process animation - only on home page */
+.home-page .processCircle {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #4CAF50, #3e8e41);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  z-index: 2;
+  animation: processFlow 10s linear infinite;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 3px rgba(0,0,0,0.3);
+  bottom: -15px;
+  left: 0;
+}
+
+@keyframes processFlow {
+  0% { transform: translateX(100vw) scale(0.9); opacity: 0; }
+  5% { opacity: 1; transform: translateX(100vw) scale(0.9); }
+  85% { opacity: 1; transform: translateX(50px) scale(1); }
+  90% { transform: translateX(30px) scale(1.1); opacity: 0; }
+  100% { transform: translateX(0) scale(1.2); opacity: 0; }
+}
+
+.home-page .road {
+  position: absolute;
+  left: -100px;
+  right: -300px;
+  bottom: -120px;
+  height: 120px;
+  background: #333333;
+  border-top: 4px dashed #ffffff;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* Staggered animations */
+.home-page .processCircle:nth-child(1) { animation-delay: 0s; }
+.home-page .processCircle:nth-child(2) { animation-delay: 4s; }
+.home-page .processCircle:nth-child(3) { animation-delay: 8s; }
+.home-page .processCircle:nth-child(4) { animation-delay: 12s; }
+.home-page .processCircle:nth-child(5) { animation-delay: 16s; }
+
+/* Navigation button styles - shown on all pages */
+.home-container nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.home-container nav ul li {
+  margin: 15px 0;
+}
+
+.home-container nav ul li a {
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 35px;
+  border-radius: 10px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.home-container nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    width: 80%;
+    margin-left: 5vw;
+  }
+  
+  .home-container nav ul li a {
+    font-size: 24px;
+    padding: 8px 20px;
+  }
+  
+  /* Adjust home-page specific elements */
+  .home-page .building {
+    left: -60px;
+    width: 60px;
+    height: 180px;
+  }
+  
+  .home-page .window {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .home-page .processCircle {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+}
+
